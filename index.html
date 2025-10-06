@@ -1,210 +1,146 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Website Sekolah Futuristik</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SMK Islam Malahayati</title>
   <style>
-    /* Reset dasar */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* Import Google Font */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-    body, html {
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: #ffffff;
       overflow-x: hidden;
-      position: relative;
     }
 
-    /* Background animasi futuristik */
-    .background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
-      z-index: -1;
-      overflow: hidden;
-      animation: animateBackground 20s linear infinite;
-    }
-
-    @keyframes animateBackground {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 1000px 0;
-      }
-    }
-
-    /* Header */
     header {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px 0;
       text-align: center;
-      padding: 60px 20px 20px;
-      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 15px #00ffe7;
     }
 
     header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
+      margin: 0;
+      font-size: 2.5rem;
       color: #00ffe7;
+      text-shadow: 0 0 5px #00ffe7;
     }
 
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-
-    /* Navigasi */
     nav {
-      background: rgba(0, 0, 0, 0.5);
-      text-align: center;
-      padding: 10px 0;
-    }
-
-    nav ul {
-      list-style: none;
-    }
-
-    nav ul li {
-      display: inline-block;
-      margin: 0 15px;
-    }
-
-    nav ul li a {
-      color: #00ffe7;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #ffffff;
-    }
-
-    /* Konten utama */
-    main {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+      display: flex;
+      justify-content: center;
       background: rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
+      padding: 10px 0;
+      box-shadow: 0 0 10px #00ffe7;
     }
 
-    .content h2 {
-      margin-bottom: 15px;
-      font-size: 1.8rem;
+    nav a {
       color: #ffffff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      transition: color 0.3s, border-bottom 0.3s;
+      border-bottom: 2px solid transparent;
     }
 
-    .content p {
-      line-height: 1.6;
-      color: #ddd;
+    nav a:hover {
+      color: #00ffe7;
+      border-bottom: 2px solid #00ffe7;
     }
 
-    /* Footer */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #00ffe7;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .content {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffe7;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
     footer {
       text-align: center;
       padding: 20px;
-      background: rgba(0, 0, 0, 0.4);
-      color: #aaa;
-      margin-top: 40px;
+      background: #000000;
+      color: #aaaaaa;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <div class="background"></div>
 
   <header>
-    <h1>SMK Futuristik Nusantara</h1>
-    <p>Membangun Masa Depan dengan Teknologi</p>
+    <h1>SMK Islam Malahayati</h1>
   </header>
 
   <nav>
-    <ul>
-      <li><a href="#">Beranda</a></li>
-      <li><a href="#">Profil</a></li>
-      <li><a href="#">Program Keahlian</a></li>
-      <li><a href="#">Kontak</a></li>
-    </ul>
+    <a href="#">Beranda</a>
+    <a href="#">Profil</a>
+    <a href="#">Jurusan</a>
+    <a href="#">Kegiatan</a>
+    <a href="#">Kontak</a>
   </nav>
 
-  <main>
-    <section class="content">
-      <h2>Selamat Datang di Website Resmi SMK Futuristik Nusantara</h2>
-      <p>SMK kami berkomitmen untuk mencetak lulusan yang siap menghadapi tantangan dunia kerja dengan keterampilan abad ke-21.</p>
-    </section>
-  </main>
+  <section class="hero">
+    <h2>Selamat Datang di SMK Islam Malahayati</h2>
+    <p>Membentuk generasi islami, unggul dalam teknologi dan berkarakter mulia.</p>
+  </section>
+
+  <section class="content">
+    <div class="card">
+      <h3>Profil Sekolah</h3>
+      <p>SMK Islam Malahayati merupakan sekolah kejuruan yang berfokus pada pengembangan teknologi, ilmu pengetahuan dan nilai-nilai keislaman.</p>
+    </div>
+    <div class="card">
+      <h3>Jurusan Unggulan</h3>
+      <ul>
+        <li>Teknik Komputer dan Jaringan (TKJ)</li>
+        <li>Rekayasa Perangkat Lunak (RPL)</li>
+        <li>Multimedia</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Ekstrakurikuler</h3>
+      <p>Berbagai kegiatan seperti Rohis, Pramuka, Desain Grafis, Robotik, dan lainnya yang menunjang minat dan bakat siswa.</p>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; 2025 SMK Futuristik Nusantara. All rights reserved.</p>
+    &copy; 2025 SMK Islam Malahayati. All rights reserved.
   </footer>
+
 </body>
 </html>
-        main {
-            padding: 20px;
-        }
-
-        section {
-            margin-bottom: 30px;
-        }
-
-        footer {
-            background-color: #2C3E50;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: auto;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>SD Negeri 1 Harapan Bangsa</h1>
-        <p>Membangun Generasi Cerdas dan Berkarakter</p>
-    </header>
-
-    <nav>
-        <a href="#">Beranda</a>
-        <a href="#">Profil Sekolah</a>
-        <a href="#">Guru & Staff</a>
-        <a href="#">Galeri</a>
-        <a href="#">Kontak</a>
-    </nav>
-
-    <main class="container">
-        <section>
-            <h2>Sambutan Kepala Sekolah</h2>
-            <p>Selamat datang di website resmi SD Negeri 1 Harapan Bangsa. Kami berkomitmen untuk memberikan pendidikan terbaik bagi generasi penerus bangsa. Semoga website ini dapat menjadi sarana informasi dan komunikasi yang bermanfaat bagi seluruh warga sekolah dan masyarakat umum.</p>
-        </section>
-
-        <section>
-            <h2>Informasi Sekolah</h2>
-            <ul>
-                <li>Tahun Berdiri: 1985</li>
-                <li>Akreditasi: A</li>
-                <li>Jumlah Siswa: 350</li>
-                <li>Ekstrakurikuler: Pramuka, Seni Tari, English Club</li>
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 SD Negeri 1 Harapan Bangsa | Jl. Pendidikan No. 123, Jakarta | Email: info@sdn1harapan.sch.id</p>
-    </footer>
-
-</body>
-  </html>
