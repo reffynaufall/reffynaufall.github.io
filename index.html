@@ -1,40 +1,151 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SD Negeri 1 Harapan Bangsa</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Website Sekolah Futuristik</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        header {
-            background-color: #2C3E50;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-        nav {
-            background-color: #2980B9;
-            display: flex;
-            justify-content: center;
-        }
+    /* Background animasi futuristik */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+      z-index: -1;
+      overflow: hidden;
+      animation: animateBackground 20s linear infinite;
+    }
 
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            display: inline-block;
-        }
+    @keyframes animateBackground {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 1000px 0;
+      }
+    }
 
-        nav a:hover {
-            background-color: #1A5276;
-        }
+    /* Header */
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
+      background: rgba(0, 0, 0, 0.4);
+    }
 
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      color: #00ffe7;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    /* Navigasi */
+    nav {
+      background: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #00ffe7;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffffff;
+    }
+
+    /* Konten utama */
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+    }
+
+    .content h2 {
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      color: #ffffff;
+    }
+
+    .content p {
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      color: #aaa;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+
+  <header>
+    <h1>SMK Futuristik Nusantara</h1>
+    <p>Membangun Masa Depan dengan Teknologi</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Beranda</a></li>
+      <li><a href="#">Profil</a></li>
+      <li><a href="#">Program Keahlian</a></li>
+      <li><a href="#">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="content">
+      <h2>Selamat Datang di Website Resmi SMK Futuristik Nusantara</h2>
+      <p>SMK kami berkomitmen untuk mencetak lulusan yang siap menghadapi tantangan dunia kerja dengan keterampilan abad ke-21.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 SMK Futuristik Nusantara. All rights reserved.</p>
+  </footer>
+</body>
+</html>
         main {
             padding: 20px;
         }
