@@ -2,145 +2,164 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SMK Islam Malahayati</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SMK Islam Malahayati</title>
   <style>
-    /* Import Google Font */
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
+    /* ========== Gaya Umum ========== */
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
     body {
       margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #ffffff;
-      overflow-x: hidden;
-    }
-
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px 0;
-      text-align: center;
-      box-shadow: 0 0 15px #00ffe7;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #00ffe7;
-      text-shadow: 0 0 5px #00ffe7;
-    }
-
-    nav {
+      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+      color: white;
+      height: 100vh;
       display: flex;
+      align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 10px 0;
-      box-shadow: 0 0 10px #00ffe7;
     }
 
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: bold;
-      transition: color 0.3s, border-bottom 0.3s;
-      border-bottom: 2px solid transparent;
-    }
-
-    nav a:hover {
-      color: #00ffe7;
-      border-bottom: 2px solid #00ffe7;
-    }
-
-    .hero {
+    /* ========== Form Login ========== */
+    .login-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      width: 300px;
       text-align: center;
-      padding: 100px 20px;
-      background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
-      background-blend-mode: overlay;
-      background-color: rgba(0, 0, 0, 0.6);
+      transition: all 0.5s ease;
     }
-
-    .hero h2 {
-      font-size: 3rem;
+    .login-container h2 {
       margin-bottom: 20px;
-      color: #00ffe7;
+      color: #00d9ff;
     }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    .content {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 30px;
-      margin-bottom: 20px;
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
       border-radius: 10px;
-      box-shadow: 0 0 10px #00ffe7;
-      transition: transform 0.3s;
+      outline: none;
+    }
+    .login-container button {
+      background: #00d9ff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #000;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .login-container button:hover {
+      background: #00b8d4;
+      transform: scale(1.05);
+    }
+    .error {
+      color: #ff4d4d;
+      font-size: 14px;
+      margin-top: 5px;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    footer {
+    /* ========== Dashboard ========== */
+    .dashboard {
+      display: none;
       text-align: center;
+      width: 90%;
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+      animation: fadeIn 0.7s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
+    .dashboard h1 {
+      color: #00e5ff;
+      margin-bottom: 10px;
+    }
+    .profile {
+      margin-top: 30px;
+      text-align: left;
+      background: rgba(255,255,255,0.1);
       padding: 20px;
-      background: #000000;
-      color: #aaaaaa;
-      font-size: 0.9rem;
+      border-radius: 15px;
+    }
+    .logout-btn {
+      margin-top: 20px;
+      background: #ff5252;
+      color: white;
+    }
+    .logout-btn:hover {
+      background: #ff1744;
     }
   </style>
 </head>
 <body>
+  <!-- FORM LOGIN -->
+  <div class="login-container" id="loginForm">
+    <h2>Login Teknologi</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Masuk</button>
+    <div class="error" id="errorMsg"></div>
+  </div>
 
-  <header>
-    <h1>SMK Islam Malahayati</h1>
-  </header>
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboard">
+    <h1>Selamat Datang di Dashboard SMK Islam Malahayati</h1>
+    <p>Portal Teknologi dan Informasi Sekolah</p>
 
-  <nav>
-    <a href="#">Beranda</a>
-    <a href="#">Profil</a>
-    <a href="#">Jurusan</a>
-    <a href="#">Kegiatan</a>
-    <a href="#">Kontak</a>
-  </nav>
-
-  <section class="hero">
-    <h2>Selamat Datang di SMK Islam Malahayati</h2>
-    <p>Membentuk generasi islami, unggul dalam teknologi dan berkarakter mulia.</p>
-  </section>
-
-  <section class="content">
-    <div class="card">
-      <h3>Profil Sekolah</h3>
-      <p>SMK Islam Malahayati merupakan sekolah kejuruan yang berfokus pada pengembangan teknologi, ilmu pengetahuan dan nilai-nilai keislaman.</p>
+    <div class="profile">
+      <h3>👤 Profil Login</h3>
+      <p><strong>Username:</strong> <span id="profileName"></span></p>
+      <p><strong>Status:</strong> Admin Sistem</p>
     </div>
-    <div class="card">
-      <h3>Jurusan Unggulan</h3>
-      <ul>
-        <li>Teknik Komputer dan Jaringan (TKJ)</li>
-        <li>Rekayasa Perangkat Lunak (RPL)</li>
-        <li>Multimedia</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Ekstrakurikuler</h3>
-      <p>Berbagai kegiatan seperti Rohis, Pramuka, Desain Grafis, Robotik, dan lainnya yang menunjang minat dan bakat siswa.</p>
-    </div>
-  </section>
 
-  <footer>
-    &copy; 2025 SMK Islam Malahayati. All rights reserved.
-  </footer>
+    <div class="profile" style="margin-top: 20px;">
+      <h3>🏫 Tentang Sekolah</h3>
+      <p>
+        SMK Islam Malahayati merupakan lembaga pendidikan kejuruan berbasis Islam yang berfokus pada pengembangan kompetensi teknologi dan karakter.
+        Sekolah ini memiliki jurusan unggulan seperti Teknik Komputer dan Jaringan (TKJ), Rekayasa Perangkat Lunak (RPL), dan Multimedia.
+      </p>
+      <p><strong>Motto:</strong> "Berilmu, Berakhlak, dan Berteknologi"</p>
+    </div>
 
+    <button class="logout-btn" onclick="logout()">Keluar</button>
+  </div>
+
+  <!-- SCRIPT LOGIN -->
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const error = document.getElementById("errorMsg");
+
+      // Data login sederhana
+      const validUser = "admin";
+      const validPass = "12345";
+
+      if (user === validUser && pass === validPass) {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+        document.getElementById("profileName").textContent = user;
+      } else {
+        error.textContent = "Username atau password salah!";
+      }
+    }
+
+    function logout() {
+      document.getElementById("dashboard").style.display = "none";
+      document.getElementById("loginForm").style.display = "block";
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("errorMsg").textContent = "";
+    }
+  </script>
 </body>
 </html>
