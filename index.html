@@ -6,28 +6,21 @@
   <title>SMK Islam Malahayati - Portal Teknologi</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
 
-    /* === DASAR === */
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
     body {
-      margin: 0;
-      overflow: hidden;
       background: #020c1b;
       color: #fff;
+      overflow: hidden;
     }
 
-    /* === ANIMASI BACKGROUND === */
     canvas {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       z-index: 0;
     }
 
-    /* === LOGIN PAGE === */
+    /* ===== LOGIN ===== */
     .login-container {
       display: flex;
       justify-content: center;
@@ -57,13 +50,11 @@
       margin: 8px 0;
       border: none;
       border-radius: 10px;
-      outline: none;
       background: rgba(255,255,255,0.1);
       color: #00e5ff;
+      outline: none;
     }
-    .login-box input::placeholder {
-      color: #aaa;
-    }
+    .login-box input::placeholder { color: #aaa; }
     .login-box button {
       width: 100%;
       padding: 10px;
@@ -75,16 +66,10 @@
       color: #000;
       transition: 0.3s;
     }
-    .login-box button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #00e5ff;
-    }
-    .error {
-      color: #ff4d4d;
-      font-size: 14px;
-    }
+    .login-box button:hover { transform: scale(1.05); box-shadow: 0 0 20px #00e5ff; }
+    .error { color: #ff4d4d; font-size: 14px; }
 
-    /* === DASHBOARD === */
+    /* ===== DASHBOARD ===== */
     .dashboard {
       display: none;
       z-index: 2;
@@ -92,36 +77,39 @@
       animation: fadeIn 0.8s ease;
     }
 
-    /* === NAVBAR === */
+    /* ===== NAVBAR FIXED & DIPERKECIL ===== */
     .navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       background: rgba(0, 0, 0, 0.6);
-      padding: 15px 25px;
+      padding: 8px 16px;
       position: sticky;
       top: 0;
       backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+      box-shadow: 0 0 15px rgba(0,255,255,0.3);
       z-index: 3;
     }
     .navbar h2 {
       color: #00e5ff;
-      text-shadow: 0 0 15px #00e5ff;
+      text-shadow: 0 0 10px #00e5ff;
+      font-size: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
     }
     .menu-btn {
-      font-size: 24px;
+      font-size: 22px;
       background: none;
       border: none;
       color: #00e5ff;
       cursor: pointer;
       transition: 0.3s;
     }
-    .menu-btn:hover {
-      transform: scale(1.2);
-    }
+    .menu-btn:hover { transform: scale(1.2); }
 
-    /* === SIDEBAR === */
+    /* ===== SIDEBAR ===== */
     .sidebar {
       position: fixed;
       top: 0;
@@ -134,9 +122,7 @@
       z-index: 2;
       padding-top: 80px;
     }
-    .sidebar.active {
-      left: 0;
-    }
+    .sidebar.active { left: 0; }
     .sidebar a {
       display: block;
       padding: 12px 25px;
@@ -151,14 +137,12 @@
       border-left: 3px solid #00e5ff;
     }
 
-    /* === KONTEN === */
-    .content {
-      padding: 40px;
-      transition: 0.5s;
-    }
+    /* ===== KONTEN ===== */
+    .content { padding: 30px; }
     h1 {
       color: #00e5ff;
       text-shadow: 0 0 15px #00e5ff;
+      font-size: 22px;
     }
     .profile-box {
       background: rgba(255,255,255,0.05);
@@ -177,16 +161,9 @@
       cursor: pointer;
       margin-top: 20px;
     }
-    .logout-btn:hover {
-      background: #ff1744;
-      box-shadow: 0 0 10px #ff1744;
-    }
+    .logout-btn:hover { background: #ff1744; box-shadow: 0 0 10px #ff1744; }
 
-    /* Animasi masuk */
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+    @keyframes fadeIn { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
   </style>
 </head>
 <body>
@@ -222,7 +199,7 @@
   </div>
 
   <script>
-    // === ANIMASI PARTIKEL / GARIS ===
+    // === BACKGROUND PARTIKEL ===
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d');
     let w, h, particles;
@@ -232,8 +209,8 @@
       particles = Array.from({length: 70}, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        dx: (Math.random() - 0.5) * 1,
-        dy: (Math.random() - 0.5) * 1,
+        dx: (Math.random() - 0.5),
+        dy: (Math.random() - 0.5),
       }));
     }
     function draw() {
@@ -250,11 +227,10 @@
       });
       requestAnimationFrame(draw);
     }
-    init(); draw();
-    window.onresize = init;
+    init(); draw(); window.onresize = init;
 
     // === LOGIN LOGIC ===
-    let usernameLogin = "";
+    let usernameLogin = "", role = "";
     function login() {
       const user = document.getElementById("username").value;
       const pass = document.getElementById("password").value;
@@ -262,12 +238,18 @@
 
       if (user === "admin" && pass === "12345") {
         usernameLogin = user;
-        document.getElementById("loginPage").style.display = "none";
-        document.getElementById("dashboardPage").style.display = "block";
-        showPage("home");
+        role = "Admin Sistem";
+      } else if (user === "user" && pass === "123") {
+        usernameLogin = user;
+        role = "Pengguna Biasa";
       } else {
         error.textContent = "Username atau password salah!";
+        return;
       }
+
+      document.getElementById("loginPage").style.display = "none";
+      document.getElementById("dashboardPage").style.display = "block";
+      showPage("home");
     }
 
     function toggleMenu() {
@@ -280,7 +262,7 @@
       document.getElementById("username").value = "";
       document.getElementById("password").value = "";
       document.getElementById("errorMsg").textContent = "";
-      usernameLogin = "";
+      usernameLogin = ""; role = "";
       document.getElementById("sidebar").classList.remove("active");
     }
 
@@ -296,12 +278,7 @@
       } else if (page === "profilSekolah") {
         content.innerHTML = `
           <h1>Profil Sekolah</h1>
-          <p>SMK Islam Malahayati merupakan sekolah kejuruan yang mengintegrasikan teknologi dengan nilai-nilai Islam. Kami mendidik siswa agar siap bersaing di era digital global.</p>
-          <ul>
-            <li><b>Alamat:</b> Jl. Pendidikan No.10, Kota Malahayati</li>
-            <li><b>Akreditasi:</b> A</li>
-            <li><b>Kepala Sekolah:</b> H. Ahmad Fauzi, S.Pd</li>
-          </ul>
+          <p>SMK Islam Malahayati mengintegrasikan teknologi dengan nilai-nilai Islam. Mendidik siswa agar siap bersaing di era digital global.</p>
         `;
       } else if (page === "jurusan") {
         content.innerHTML = `
@@ -311,15 +288,14 @@
             <li>🔧 Teknik Komputer dan Jaringan (TKJ)</li>
             <li>🎨 Multimedia</li>
           </ul>
-          <p>Setiap jurusan menggunakan peralatan berteknologi tinggi dengan pendekatan pembelajaran berbasis industri.</p>
         `;
       } else if (page === "profilUser") {
         content.innerHTML = `
           <h1>Profil Pengguna</h1>
           <div class="profile-box">
             <p><b>Username:</b> ${usernameLogin}</p>
-            <p><b>Status:</b> Admin Sistem</p>
-            <p><b>Deskripsi:</b> Anda sedang login sebagai pengguna utama dashboard teknologi SMK Islam Malahayati.</p>
+            <p><b>Status:</b> ${role}</p>
+            <p><b>Deskripsi:</b> Anda sedang login sebagai ${role.toLowerCase()} dalam sistem portal SMK Islam Malahayati.</p>
           </div>
         `;
       }
