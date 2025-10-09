@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SMK Islam Malahayati - Portal Teknologi</title>
+  <title>Dashboard Teknologi - SMK Islam Malahayati</title>
   <style>
     /* === GAYA DASAR === */
     * {
@@ -18,12 +18,11 @@
       overflow-x: hidden;
     }
 
-    /* === FORM LOGIN === */
+    /* === LOGIN PAGE === */
     .login-container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
       transition: 0.5s;
     }
@@ -32,13 +31,13 @@
       backdrop-filter: blur(10px);
       padding: 40px;
       border-radius: 20px;
-      text-align: center;
       width: 320px;
+      text-align: center;
       box-shadow: 0 0 30px rgba(0,0,0,0.5);
     }
     .login-box h2 {
+      color: #00e5ff;
       margin-bottom: 20px;
-      color: #00d9ff;
     }
     .login-box input {
       width: 100%;
@@ -51,11 +50,11 @@
     .login-box button {
       width: 100%;
       padding: 10px;
-      background: #00d9ff;
+      background: #00e5ff;
       border: none;
       border-radius: 10px;
-      font-weight: bold;
       cursor: pointer;
+      font-weight: bold;
       transition: 0.3s;
     }
     .login-box button:hover {
@@ -78,58 +77,78 @@
     }
 
     /* === NAVBAR === */
-    nav {
+    .navbar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(15px);
-      padding: 15px 40px;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
     }
-    nav h2 {
+    .menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
       color: #00e5ff;
-      font-size: 20px;
+    }
+    .navbar h2 {
+      color: #00e5ff;
+      font-size: 18px;
       letter-spacing: 1px;
     }
-    .menu {
-      display: flex;
-      gap: 20px;
+
+    /* === SIDEBAR === */
+    .sidebar {
+      position: fixed;
+      left: -240px;
+      top: 0;
+      width: 220px;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      transition: 0.4s;
+      padding-top: 70px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.5);
     }
-    .menu a {
-      color: white;
+    .sidebar.active {
+      left: 0;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #00e5ff;
       text-decoration: none;
       font-weight: 500;
-      position: relative;
+      border-left: 3px solid transparent;
       transition: 0.3s;
     }
-    .menu a::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -5px;
-      width: 0%; height: 2px;
-      background: #00e5ff;
-      transition: 0.3s;
-    }
-    .menu a:hover::after {
-      width: 100%;
+    .sidebar a:hover {
+      background: rgba(0,229,255,0.1);
+      border-left: 3px solid #00e5ff;
     }
 
     /* === KONTEN === */
     .content {
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
-      background: rgba(255,255,255,0.05);
-      border-radius: 15px;
-      margin-top: 30px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      animation: fadeIn 0.6s ease;
+      padding: 30px;
+      margin-left: 0;
+      transition: margin-left 0.4s;
+    }
+    .content.shift {
+      margin-left: 220px;
     }
     h1 {
       color: #00e5ff;
+    }
+    .profile-box {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 20px;
     }
     .logout-btn {
       margin-top: 30px;
@@ -147,22 +166,14 @@
 
     /* === RESPONSIVE === */
     @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .content {
-        padding: 20px;
+      .content.shift {
+        margin-left: 0;
       }
     }
   </style>
 </head>
 <body>
-  <!-- LOGIN PAGE -->
+  <!-- LOGIN -->
   <div class="login-container" id="loginPage">
     <div class="login-box">
       <h2>Login Teknologi</h2>
@@ -175,66 +186,76 @@
 
   <!-- DASHBOARD -->
   <div class="dashboard" id="dashboardPage">
-    <nav>
+    <!-- Navbar -->
+    <div class="navbar">
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
       <h2>SMK Islam Malahayati</h2>
-      <div class="menu">
-        <a href="#" onclick="showPage('home')">Beranda</a>
-        <a href="#" onclick="showPage('profil')">Profil Sekolah</a>
-        <a href="#" onclick="showPage('jurusan')">Jurusan</a>
-        <a href="#" onclick="showPage('kontak')">Kontak</a>
-        <a href="#" onclick="logout()">Logout</a>
-      </div>
-    </nav>
-
-    <div class="content" id="content">
-      <!-- Konten akan diganti dinamis lewat JS -->
     </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <a href="#" onclick="showPage('home')">🏠 Beranda</a>
+      <a href="#" onclick="showPage('profilSekolah')">🏫 Profil Sekolah</a>
+      <a href="#" onclick="showPage('jurusan')">💻 Jurusan</a>
+      <a href="#" onclick="showPage('profilUser')">👤 Profil User</a>
+      <a href="#" onclick="logout()">🚪 Logout</a>
+    </div>
+
+    <!-- Konten -->
+    <div class="content" id="content"></div>
   </div>
 
   <script>
-    // === LOGIN ===
+    let usernameLogin = "";
+
     function login() {
       const user = document.getElementById("username").value;
       const pass = document.getElementById("password").value;
       const error = document.getElementById("errorMsg");
 
       if (user === "admin" && pass === "12345") {
+        usernameLogin = user;
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("dashboardPage").style.display = "block";
-        showPage('home');
+        showPage("home");
       } else {
         error.textContent = "Username atau password salah!";
       }
     }
 
-    // === LOGOUT ===
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("active");
+      document.getElementById("content").classList.toggle("shift");
+    }
+
     function logout() {
       document.getElementById("dashboardPage").style.display = "none";
       document.getElementById("loginPage").style.display = "flex";
       document.getElementById("username").value = "";
       document.getElementById("password").value = "";
       document.getElementById("errorMsg").textContent = "";
+      usernameLogin = "";
+      document.getElementById("sidebar").classList.remove("active");
     }
 
-    // === GANTI HALAMAN ===
     function showPage(page) {
       const content = document.getElementById("content");
+      document.getElementById("sidebar").classList.remove("active");
+      content.classList.remove("shift");
 
       if (page === "home") {
         content.innerHTML = `
           <h1>Selamat Datang di SMK Islam Malahayati</h1>
-          <p>Portal resmi sekolah berbasis teknologi dan karakter Islam. 
-          Kami berkomitmen untuk mencetak generasi unggul dalam bidang sains, teknologi, dan akhlak.</p>
+          <p>Portal resmi berbasis teknologi dan karakter Islam. Kami berkomitmen membentuk generasi unggul di bidang teknologi, akhlak, dan inovasi.</p>
         `;
-      } else if (page === "profil") {
+      } else if (page === "profilSekolah") {
         content.innerHTML = `
           <h1>Profil Sekolah</h1>
-          <p>SMK Islam Malahayati didirikan untuk mempersiapkan siswa menjadi insan yang profesional, beriman, dan berilmu. 
-          Sekolah ini memiliki fasilitas modern serta tenaga pengajar berkompeten di bidang teknologi.</p>
+          <p>SMK Islam Malahayati berdiri sebagai lembaga pendidikan kejuruan dengan visi mencetak lulusan yang berkompeten dan berakhlak mulia.</p>
           <ul>
-            <li><b>Alamat:</b> Jl. Pendidikan No. 10, Kota Malahayati</li>
+            <li><b>Alamat:</b> Jl. Pendidikan No.10, Kota Malahayati</li>
             <li><b>Akreditasi:</b> A</li>
-            <li><b>Kepala Sekolah:</b> Bapak H. Ahmad Fauzi, S.Pd.</li>
+            <li><b>Kepala Sekolah:</b> H. Ahmad Fauzi, S.Pd</li>
           </ul>
         `;
       } else if (page === "jurusan") {
@@ -245,14 +266,16 @@
             <li>🔧 Teknik Komputer dan Jaringan (TKJ)</li>
             <li>🎨 Multimedia</li>
           </ul>
-          <p>Setiap jurusan dibekali dengan kurikulum berbasis industri serta kegiatan praktik yang mendukung keahlian siswa.</p>
+          <p>Setiap jurusan dilengkapi fasilitas laboratorium modern untuk mendukung praktik kejuruan.</p>
         `;
-      } else if (page === "kontak") {
+      } else if (page === "profilUser") {
         content.innerHTML = `
-          <h1>Hubungi Kami</h1>
-          <p>📍 Alamat: Jl. Pendidikan No. 10, Kota Malahayati</p>
-          <p>📞 Telepon: (021) 555-1234</p>
-          <p>✉️ Email: info@smkislam-malahayati.sch.id</p>
+          <h1>Profil Pengguna</h1>
+          <div class="profile-box">
+            <p><b>Username:</b> ${usernameLogin}</p>
+            <p><b>Status:</b> Admin Sistem</p>
+            <p><b>Login:</b> Berhasil diidentifikasi sebagai pengguna resmi sistem dashboard teknologi.</p>
+          </div>
         `;
       }
     }
